@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-from impostos import ISS, ICMS
+from impostos import ISS, ICMS, ICPP, IKCV
 
 class Calculador_de_impostos(object):
 
@@ -23,6 +23,12 @@ if __name__ == '__main__':
 	orcamento.adiciona_item(Item('ITEM 2', 200))
 	orcamento.adiciona_item(Item('ITEM 3', 250))
 
+	print 'ISS e ICMS'
 	calculador.realiza_calculo(orcamento, ISS())
 	calculador.realiza_calculo(orcamento, ICMS())
+
+	print 'ICPP e IKCV'
+	calculador.realiza_calculo(orcamento, ICPP())
+	calculador.realiza_calculo(orcamento, IKCV())
+
 
