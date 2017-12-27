@@ -14,6 +14,7 @@ class Orcamento(object):
     def obter_itens(self):
 
         return tuple(self.__itens)
+
     @property
     def total_itens(self):
         return len(self.__itens)
