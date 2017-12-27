@@ -17,7 +17,7 @@ class Item(object):
 
 class Nota_fiscal(object):
 
-    def __init__(self, razao_social, cnpj, itens, data_de_emissao, detalhes):
+    def __init__(self, razao_social, cnpj, itens, data_de_emissao=date.today(), detalhes=''):
         self.__razao_social = razao_social
         self.__cnpj = cnpj
         self.__data_de_emissao = data_de_emissao
@@ -44,6 +44,8 @@ class Nota_fiscal(object):
 
 if __name__ == '__main__':
 
+    from criador_de_nota_fiscal import Criador_de_nota_fiscal
+
     itens=[
         Item(
             'ITEM A',
@@ -56,9 +58,13 @@ if __name__ == '__main__':
     ]
 
     nota_fiscal = Nota_fiscal(
-        'FHSA Limitada',
-        '012345678901234',
-        itens,
-        date.today(),
-        ''
+        cnpj='012345678901234',
+        razao_social='FHSA Limitada',
+        itens=itens
     )
+
+    nota_fiscal_criada_com_builder = (Criador_de_nota_fiscal()
+                                    .com_razao_social('FHSA Limitada')
+                                    .com_cnpj('012345678901234')
+                                    .com_itens(itens)
+                                    .constroi())
